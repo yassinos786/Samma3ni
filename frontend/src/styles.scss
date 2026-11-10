@@ -1,0 +1,487 @@
+/* Samma3ni Global Theme & Design Tokens */
+
+:root {
+  --bg-darkest: #09090b;
+  --bg-base: #0f0f13;
+  --bg-surface: #17171e;
+  --bg-card: #1f1f29;
+  --bg-card-hover: #292938;
+  --bg-glass: rgba(23, 23, 30, 0.75);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(30, 215, 96, 0.35);
+
+  --primary: #1ed760;
+  --primary-hover: #1fdf64;
+  --primary-gradient: linear-gradient(135deg, #1ed760 0%, #00b4d8 100%);
+  --accent-purple: #8b5cf6;
+  --accent-rose: #f43f5e;
+  --accent-cyan: #06b6d4;
+
+  --text-main: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --player-height: 90px;
+  --sidebar-width: 260px;
+  --header-height: 72px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 35px -5px rgba(0, 0, 0, 0.7);
+  --glow-primary: 0 0 20px rgba(30, 215, 96, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-darkest);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Material Symbols configuration */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
+  user-select: none;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Common interactive elements */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  color: inherit;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+input, textarea, select {
+  font-family: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+}
+
+/* Custom Range Slider for Seek and Volume */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.12);
+  height: 4px;
+  border-radius: var(--radius-full);
+  outline: none;
+  cursor: pointer;
+  transition: height 0.15s ease, background 0.15s ease;
+}
+
+input[type="range"]:hover {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-main);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease, background 0.15s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  opacity: 1;
+  background: var(--primary);
+  transform: scale(1.1);
+}
+
+/* Animation utilities & Micro-Interactions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(30, 215, 96, 0.35); }
+  50% { box-shadow: 0 0 30px rgba(30, 215, 96, 0.75); }
+}
+
+@keyframes musicEqualizer {
+  0%, 100% { height: 4px; }
+  25% { height: 14px; }
+  50% { height: 8px; }
+  75% { height: 18px; }
+}
+
+@keyframes spinVinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes heartPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.4); }
+  70% { transform: scale(0.85); }
+  100% { transform: scale(1); }
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes ambientMesh {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes cardCascade {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes rippleWave {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.3; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-heart-pop {
+  animation: heartPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.vinyl-rotating {
+  animation: spinVinyl 12s linear infinite;
+}
+
+.glow-on-play {
+  box-shadow: 0 0 25px rgba(30, 215, 96, 0.55), 0 0 50px rgba(30, 215, 96, 0.2);
+}
+
+/* Screen Gliding Animations */
+
+@keyframes screenGliderLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-140px) perspective(1000px) rotateY(15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) perspective(1000px) rotateY(0deg);
+  }
+}
+
+@keyframes screenGliderRight {
+  0% {
+    opacity: 0;
+    transform: translateX(160px) perspective(1000px) rotateY(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) perspective(1000px) rotateY(0deg);
+  }
+}
+
+@keyframes screenGliderDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes screenGliderUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate3dDisc {
+  0% {
+    transform: perspective(600px) rotateX(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: perspective(600px) rotateX(55deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateHologramRings {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateReverse {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes orbitSatellite {
+  0% {
+    transform: rotate(0deg) translateX(46px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(46px) rotate(-360deg);
+  }
+}
+
+@keyframes orbitSatelliteOuter {
+  0% {
+    transform: rotate(180deg) translateX(68px) rotate(-180deg);
+  }
+  100% {
+    transform: rotate(540deg) translateX(68px) rotate(-540deg);
+  }
+}
+
+@keyframes radarSonar {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.9;
+    box-shadow: 0 0 0 0 rgba(30, 215, 96, 0.7);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+    box-shadow: 0 0 50px 25px rgba(30, 215, 96, 0);
+  }
+}
+
+@keyframes splashFadeExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+    filter: blur(14px);
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.animate-glider-left {
+  animation: screenGliderLeft 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-glider-right {
+  animation: screenGliderRight 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-glider-down {
+  animation: screenGliderDown 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-glider-up {
+  animation: screenGliderUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Spinner Component */
+.pro-hologram-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 60px 20px;
+  position: relative;
+  user-select: none;
+
+  .hologram-stage {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Sonar radar pulse rings expanding */
+  .radar-ring {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(30, 215, 96, 0.4);
+    pointer-events: none;
+    animation: radarSonar 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+
+    &.r2 {
+      animation-delay: 0.85s;
+      border-color: rgba(6, 182, 212, 0.4);
+    }
+    &.r3 {
+      animation-delay: 1.7s;
+      border-color: rgba(139, 92, 246, 0.35);
+    }
+  }
+
+  /* Rotating Gyroscope Rings */
+  .gyro-outer {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px dashed rgba(30, 215, 96, 0.45);
+    animation: rotateHologramRings 8s linear infinite;
+    box-shadow: 0 0 15px rgba(30, 215, 96, 0.2);
+  }
+
+  .gyro-inner {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px dotted rgba(6, 182, 212, 0.6);
+    animation: rotateReverse 5s linear infinite;
+  }
+
+  /* Central 3D Disc */
+  .hologram-disc {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1ed760 0%, #06b6d4 45%, #09090b 80%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 25px rgba(30, 215, 96, 0.65), inset 0 0 12px rgba(255, 255, 255, 0.4);
+    position: relative;
+    z-index: 2;
+    animation: pulseGlow 2.5s ease-in-out infinite;
+
+    .disc-core-icon {
+      font-size: 28px;
+      color: #000;
+      font-variation-settings: 'FILL' 1;
+      animation: spinVinyl 4s linear infinite;
+    }
+  }
+
+  /* Orbiting Satellites */
+  .satellite-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px #1ed760, 0 0 20px #06b6d4;
+    animation: orbitSatellite 2.2s linear infinite;
+    z-index: 3;
+
+    &.sat-2 {
+      width: 6px;
+      height: 6px;
+      background: #00f2fe;
+      animation: orbitSatelliteOuter 3.4s linear infinite;
+    }
+  }
+
+  /* Tech Status Typography */
+  .hologram-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+
+    .loading-tech-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #fff;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #1ed760, #00b4d8, #fff, #1ed760);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: sweepGlow 3s linear infinite;
+    }
+
+    .loading-sub-text {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      letter-spacing: 0.8px;
+      font-weight: 600;
+    }
+  }
+}

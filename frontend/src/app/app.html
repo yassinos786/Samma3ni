@@ -1,0 +1,89 @@
+<div class="app-root-shell" [class.app-loaded]="!isBooting()">
+
+  <!-- Startup Splash Screen -->
+  @if (isBooting()) {
+    <div class="app-splash-screen" [class.splash-exit]="bootExiting()">
+      <div class="splash-ambient-mesh"></div>
+      
+      <!-- Hologram 3D Stage -->
+      <div class="hologram-stage-lg">
+        <!-- Sonar Radar Waves -->
+        <div class="radar-sonar-ring r1"></div>
+        <div class="radar-sonar-ring r2"></div>
+        <div class="radar-sonar-ring r3"></div>
+
+        <!-- Rotating Gyroscope Rings -->
+        <div class="gyro-ring-outer"></div>
+        <div class="gyro-ring-inner"></div>
+
+        <!-- 3D Rotating Holographic Disc -->
+        <div class="hologram-disc-3d">
+          <div class="disc-neon-spindle">
+            <span class="material-symbols-outlined disc-icon">graphic_eq</span>
+          </div>
+        </div>
+
+        <!-- Orbiting Satellites -->
+        <div class="orbit-satellite sat-1"></div>
+        <div class="orbit-satellite sat-2"></div>
+      </div>
+
+      <!-- App Brand & Identity -->
+      <div class="splash-branding">
+        <h1 class="splash-title">SAMMA3NI</h1>
+        <div class="splash-sub-brand">
+          <span class="arabic">سَمَّعْنِي</span>
+          <span class="dot">•</span>
+          <span class="tech-tag">HI-RES SPATIAL AUDIO</span>
+        </div>
+      </div>
+
+      <!-- Jumping Audio Equalizer -->
+      <div class="splash-equalizer-bars">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+
+      <!-- Progress Track & Technical Status -->
+      <div class="splash-progress-box">
+        <div class="splash-status-line">
+          <span class="status-msg">{{ bootStatus() }}</span>
+          <span class="status-pct">{{ bootProgress() }}%</span>
+        </div>
+        <div class="splash-progress-track">
+          <div class="splash-progress-fill" [style.width.%]="bootProgress()"></div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Dynamic Route Views: Home & Secret Studio -->
+  <router-outlet></router-outlet>
+
+  <!-- Anghami Signature Blue Promo Banner (Above player bar if not signed in) -->
+  @if (!userService.currentUser() && !userService.promoDismissed()) {
+    <div class="anghami-promo-bar animate-fade-in">
+      <div class="promo-text-wrap">
+        <span class="promo-title">Sign up to enjoy all the music you want for free.</span>
+        <span class="promo-sub">No credit card needed. Unlimited high-fidelity streams on Samma3ni.</span>
+      </div>
+      <div class="promo-actions">
+        <button class="btn-promo-signup" (click)="userService.openAuth()">
+          <span>Sign up for free</span>
+        </button>
+        <button class="btn-promo-close" (click)="userService.dismissPromo()" title="Dismiss">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Persistent Bottom Audio Player Bar across all routes -->
+  <app-player-bar></app-player-bar>
+
+  <!-- Global Auth Modal (Google, Facebook, Phone, Mandatory Limit Gatekeeper) -->
+  <app-auth-modal></app-auth-modal>
+
+  <!-- Floating Toast Notifications -->
+  <app-toast></app-toast>
+</div>

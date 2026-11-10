@@ -1,0 +1,334 @@
+.app-root-shell {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-darkest);
+}
+
+/* Startup Splash Screen */
+.app-splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: radial-gradient(circle at center, #0d1117 0%, #06080c 55%, #020305 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  user-select: none;
+  overflow: hidden;
+
+  &.splash-exit {
+    animation: splashFadeExit 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+
+.splash-ambient-mesh {
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 215, 96, 0.12) 0%, rgba(6, 182, 212, 0.08) 35%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  animation: ambientMesh 8s ease infinite;
+}
+
+.hologram-stage-lg {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Expanding Radar Sonar Rings */
+.radar-sonar-ring {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(30, 215, 96, 0.5);
+  pointer-events: none;
+  animation: radarSonar 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+
+  &.r2 {
+    animation-delay: 0.9s;
+    border-color: rgba(6, 182, 212, 0.45);
+  }
+  &.r3 {
+    animation-delay: 1.8s;
+    border-color: rgba(139, 92, 246, 0.35);
+  }
+}
+
+/* Gyroscope Rings with 3D Rotation */
+.gyro-ring-outer {
+  position: absolute;
+  width: 154px;
+  height: 154px;
+  border-radius: 50%;
+  border: 2px dashed rgba(30, 215, 96, 0.55);
+  animation: rotateHologramRings 8s linear infinite;
+  box-shadow: 0 0 20px rgba(30, 215, 96, 0.25);
+}
+
+.gyro-ring-inner {
+  position: absolute;
+  width: 114px;
+  height: 114px;
+  border-radius: 50%;
+  border: 2px dotted rgba(6, 182, 212, 0.7);
+  animation: rotateReverse 5s linear infinite;
+}
+
+/* Central 3D Holographic Vinyl */
+.hologram-disc-3d {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1ed760 0%, #06b6d4 40%, #0a0a0f 80%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 35px rgba(30, 215, 96, 0.75), inset 0 0 15px rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: 2;
+  animation: pulseGlow 2.5s ease-in-out infinite;
+
+  .disc-neon-spindle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 12px rgba(30, 215, 96, 0.6);
+
+    .disc-icon {
+      font-size: 22px;
+      color: var(--primary);
+      animation: spinVinyl 3s linear infinite;
+    }
+  }
+}
+
+/* Orbiting Satellites */
+.orbit-satellite {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 12px #1ed760, 0 0 24px #06b6d4;
+  animation: orbitSatellite 2.2s linear infinite;
+  z-index: 3;
+
+  &.sat-2 {
+    width: 7px;
+    height: 7px;
+    background: #00f2fe;
+    animation: orbitSatelliteOuter 3.2s linear infinite;
+  }
+}
+
+/* Branding */
+.splash-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+
+  .splash-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: #fff;
+    background: linear-gradient(135deg, #ffffff 0%, #1ed760 60%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 15px rgba(30, 215, 96, 0.3));
+  }
+
+  .splash-sub-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    .arabic {
+      font-size: 1.1rem;
+    }
+
+    .dot {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .tech-tag {
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+    }
+  }
+}
+
+/* Jumping Equalizer */
+.splash-equalizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 24px;
+
+  span {
+    width: 3.5px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #1ed760, #00b4d8);
+    animation: musicEqualizer 0.75s infinite ease-in-out alternate;
+
+    &:nth-child(1) { height: 6px; animation-delay: 0.1s; }
+    &:nth-child(2) { height: 18px; animation-delay: 0.3s; }
+    &:nth-child(3) { height: 12px; animation-delay: 0.15s; }
+    &:nth-child(4) { height: 22px; animation-delay: 0.45s; }
+    &:nth-child(5) { height: 10px; animation-delay: 0.25s; }
+    &:nth-child(6) { height: 20px; animation-delay: 0.4s; }
+    &:nth-child(7) { height: 14px; animation-delay: 0.2s; }
+    &:nth-child(8) { height: 8px; animation-delay: 0.35s; }
+  }
+}
+
+/* Progress Bar & Tech Status */
+.splash-progress-box {
+  width: 340px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .splash-status-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 0.8px;
+    font-family: monospace;
+
+    .status-msg {
+      color: var(--text-main);
+    }
+
+    .status-pct {
+      color: var(--primary);
+    }
+  }
+
+  .splash-progress-track {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+  }
+
+  .splash-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1ed760, #00b4d8, #a855f7);
+    border-radius: var(--radius-full);
+    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 12px rgba(30, 215, 96, 0.7);
+  }
+}
+
+/* Anghami Bottom Callout Banner */
+.anghami-promo-bar {
+  position: fixed;
+  bottom: var(--player-height, 86px);
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, #1e3a8a 0%, #0369a1 50%, #0284c7 100%);
+  color: #fff;
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 999;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.promo-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  .promo-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+  }
+
+  .promo-sub {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.82);
+  }
+}
+
+.promo-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-promo-signup {
+  background: #ffffff;
+  color: #0f172a;
+  border: none;
+  padding: 9px 24px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.04);
+    background: #f1f5f9;
+  }
+}
+
+.btn-promo-close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  transition: all 0.2s;
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .material-symbols-outlined { font-size: 20px; }
+}
+
+@media (max-width: 768px) {
+  .anghami-promo-bar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 10px 16px;
+  }
+}
