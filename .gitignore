@@ -1,0 +1,40 @@
+# Samma3ni - Git Ignore
+
+# OS & Environment
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.env.*.local
+*.log
+
+# IDE & Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Backend (Java / Spring Boot / Maven)
+backend/target/
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Audio & Media Uploads / Download Scripts (Large files & media)
+backend/uploads/*
+!backend/uploads/.gitkeep
+downloads/
+screenshots/
+/*.jpg
+/*.png
+
+# Frontend (Angular / Node)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+node_modules/
+dist/
+.angular/
+.npm/
